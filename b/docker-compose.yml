@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - '80:80'
+      - '443:443'
+    #restart: always
+    environment:
+      DOMAINS: 'rodger.sytes.net -> http://rodger.sytes.net:80'
+      #DOMAINS: 'localhost -> http://localhost:80'
+      # STAGE: 'local'
+      STAGE: 'staging'
+      # STAGE: 'production'
+      # FORCE_RENEW: 'true'
+    volumes:
+      - ./src:/var/www/html:ro
