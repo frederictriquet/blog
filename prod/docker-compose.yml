@@ -4,14 +4,11 @@ https-portal:
     - '80:80'
     - '443:443'
   links:
-    #- wordpress
     - php
   restart: always
   environment:
-#    DOMAINS: 'localhost -> http://wordpress:80'
-    DOMAINS: 'localhost -> http://php:80'
-    STAGE: 'local'
-    # STAGE: 'production'
+    DOMAINS: 'rodger.sytes.net -> http://php:80'
+    STAGE: 'production'
     # FORCE_RENEW: 'true'
 
 #wordpress:
@@ -22,5 +19,4 @@ https-portal:
 php:
   image: romeoz/docker-apache-php
   volumes:
-    - ./src/htmly:/var/www/app
-    #- ./src/Pico:/var/www/app
+    - ./html:/var/www/app
