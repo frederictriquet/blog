@@ -22,4 +22,5 @@ https-portal:
 php:
   image: romeoz/docker-apache-php
   volumes:
-    - ./src:/var/www/app
+    - ./src/htmly:/var/www/app
+    #- ./src/Pico:/var/www/app
