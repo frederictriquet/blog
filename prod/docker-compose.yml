@@ -19,4 +19,4 @@ https-portal:
 php:
   image: romeoz/docker-apache-php
   volumes:
-    - ./html:/var/www/app
+    - ./html:/var/www/app:rw
