@@ -1,23 +1,21 @@
-https-portal:
-  image: steveltn/https-portal:1
-  ports:
-    - '80:80'
-    - '443:443'
-  links:
-    - php
-  restart: always
-  environment:
-    DOMAINS: 'rodger.sytes.net -> http://php:80'
-    STAGE: 'production'
-    # FORCE_RENEW: 'true'
+version: '3'
 
-#wordpress:
-#  image: wordpress
-#  links:
-#    - db:mysql
+services:
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - '80:80'
+      - '443:443'
+    links:
+      - php
+    restart: always
+    environment:
+      DOMAINS: 'rodger.sytes.net -> http://php:80'
+      STAGE: 'production'
+      # FORCE_RENEW: 'true'
 
-php:
-  build:
-    context: ./docker/php
-  volumes:
-    - ./html:/var/www/app:rw
+  php:
+    build:
+      context: ./docker/php
+    volumes:
+      - ./html:/var/www/app:rw
