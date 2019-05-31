@@ -17,6 +17,7 @@ https-portal:
 #    - db:mysql
 
 php:
-  image: romeoz/docker-apache-php
+  build:
+    context: ./docker/php
   volumes:
     - ./html:/var/www/app:rw
