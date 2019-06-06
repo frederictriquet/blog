@@ -1,4 +1,9 @@
 <?php
+header('X-Frame-Options: DENY');
+header("X-XSS-Protection: 1; mode=block");
+header("Strict-Transport-Security: max-age=31536000; includeSubDomains");
+
+header("X-Content-Type-Options: nosniff");
 
 // Load the configuration file
 config('source', $config_file);

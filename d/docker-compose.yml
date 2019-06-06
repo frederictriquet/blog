@@ -9,7 +9,7 @@ https-portal:
   restart: always
   environment:
 #    DOMAINS: 'localhost -> http://wordpress:80'
-    DOMAINS: 'localhost -> http://php:80'
+    DOMAINS: 'localhost -> http://php:80, host.docker.internal -> http://php:80'
     STAGE: 'local'
     # STAGE: 'production'
     # FORCE_RENEW: 'true'
