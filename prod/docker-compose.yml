@@ -19,5 +19,5 @@ services:
     build:
       context: ./docker/php
     volumes:
-      - ./src/htmly:/var/www/app
+      - ./html:/var/www/app:rw
       #- ./src/Pico:/var/www/app
