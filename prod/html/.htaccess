@@ -2,20 +2,15 @@
 Options -Indexes
 
 # Make HTMLy handle any 404 errors.
-ErrorDocument 404 /index.php
+ErrorDocument 404 /
+ErrorDocument 403 /
 
 # Set the default handler.
 DirectoryIndex index.php
 
 
-<Files "./composer.json">
-  Order Deny,Allow
-  Deny from all
-</Files>
-
-<FilesMatch "^composer">
-Order allow,deny
-Deny from all
+<FilesMatch "^*json$">
+        Require all denied
 </FilesMatch>
 
 # Requires mod_expires to be enabled.

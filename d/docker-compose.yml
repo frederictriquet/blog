@@ -1,26 +1,31 @@
-https-portal:
-  image: steveltn/https-portal:1
-  ports:
-    - '80:80'
-    - '443:443'
-  links:
-    #- wordpress
-    - php
-  restart: always
-  environment:
-#    DOMAINS: 'localhost -> http://wordpress:80'
-    DOMAINS: 'localhost -> http://php:80, host.docker.internal -> http://php:80'
-    STAGE: 'local'
-    # STAGE: 'production'
-    # FORCE_RENEW: 'true'
+version: '3'
 
-#wordpress:
-#  image: wordpress
-#  links:
-#    - db:mysql
+services:
+  https-portal:
+    image: steveltn/https-portal:1
+    ports:
+      - '80:80'
+      - '443:443'
+    links:
+      #- wordpress
+      - php
+    restart: always
+    environment:
+  #    DOMAINS: 'localhost -> http://wordpress:80'
+      DOMAINS: 'localhost -> http://php:80, host.docker.internal -> http://php:80'
+      STAGE: 'local'
+      # STAGE: 'production'
+      # FORCE_RENEW: 'true'
 
-php:
-  image: romeoz/docker-apache-php
-  volumes:
-    - ./src/htmly:/var/www/app
-    #- ./src/Pico:/var/www/app
+  #wordpress:
+  #  image: wordpress
+  #  links:
+  #    - db:mysql
+
+  php:
+    #image: romeoz/docker-apache-php
+    build:
+      context: ./docker/php
+    volumes:
+      - ./src/htmly:/var/www/app
+      #- ./src/Pico:/var/www/app

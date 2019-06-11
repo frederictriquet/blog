@@ -15,6 +15,9 @@ services:
       # FORCE_RENEW: 'true'
 
   php:
-    image: romeoz/docker-apache-php
+    #image: romeoz/docker-apache-php
+    build:
+      context: ./docker/php
     volumes:
-      - ./html:/var/www/app:rw
+      - ./src/htmly:/var/www/app
+      #- ./src/Pico:/var/www/app
